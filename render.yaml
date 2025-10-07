@@ -1,0 +1,47 @@
+services:
+  - type: web
+    name: EnergyInsight-backend
+    env: python
+    plan: free
+    region: oregon
+    rootDir: .
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: SUPABASE_JWT_SECRET
+        sync: false
+      - key: SUPABASE_DB_URL
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: SUPABASE_DATASET_TABLE
+        value: energy_datasets
+      - key: SUPABASE_READINGS_TABLE
+        value: energy_readings
+      - key: ENERGY_INSIGHT_DEFAULT_RATE
+        value: "0.32"
+      - key: ENERGY_INSIGHT_CO2_FACTOR
+        value: "0.45"
+
+  - type: web
+    name: EnergyInsight-frontend
+    env: node
+    plan: free
+    region: oregon
+    rootDir: frontend
+    buildCommand: pnpm install --frozen-lockfile && pnpm build
+    startCommand: pnpm start --port $PORT
+    envVars:
+      - key: NEXT_PUBLIC_SUPABASE_URL
+        sync: false
+      - key: NEXT_PUBLIC_SUPABASE_ANON_KEY
+        sync: false
+      - key: NEXT_PUBLIC_API_BASE_URL
+        fromService:
+          type: web
+          name: EnergyInsight-backend
+          property: url

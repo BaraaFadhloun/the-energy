@@ -304,7 +304,18 @@ def _create_chat_response(
         }
         if response_format is not None:
             kwargs["response_format"] = response_format
-        completion = client.responses.create(**kwargs)
+        try:
+            completion = client.responses.create(**kwargs)
+        except TypeError as exc:
+            # Some OpenAI client versions do not support the response_format
+            # argument on the responses API yet. Fallback to the same call
+            # without that parameter and rely on the system prompt to
+            # encourage valid JSON output.
+            if "response_format" in str(exc) and response_format is not None:
+                kwargs.pop("response_format", None)
+                completion = client.responses.create(**kwargs)
+            else:
+                raise
         return _extract_response_text(completion)
 
     chat = getattr(client, "chat", None)
