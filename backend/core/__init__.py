@@ -1,0 +1,1 @@
+"""Energy Insight core package."""

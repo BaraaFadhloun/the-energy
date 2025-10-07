@@ -1,0 +1,383 @@
+export type Language = "fr" | "en"
+
+type TranslationRecord = Record<string, unknown>
+
+export const translations: Record<Language, TranslationRecord> = {
+  fr: {
+    header: {
+      brandTagline: "Analytique énergétique intelligente",
+      nav: {
+        overview: "Vue d'ensemble",
+        upload: "Import des données",
+        analytics: "Tableau de bord",
+        chat: "Assistant IA",
+      },
+      toggleLabel: "FR / EN",
+      toggleDescription: "Basculer l'interface en anglais",
+    },
+    auth: {
+      signInTitle: "Connexion",
+      signInSubtitle: "Accédez à vos analyses énergétiques.",
+      emailLabel: "Adresse e-mail",
+      passwordLabel: "Mot de passe",
+      confirmPasswordLabel: "Confirmer le mot de passe",
+      submitLabel: "Se connecter",
+      submittingLabel: "Connexion en cours...",
+      errorPrefix: "La connexion a échoué : ",
+      signOut: "Se déconnecter",
+      signInCta: "Se connecter",
+      postSignInRedirect: "Accéder au tableau de bord",
+      signUpTitle: "Créer un compte",
+      signUpSubtitle: "Activez votre accès aux recommandations énergétiques.",
+      signUpSubmitLabel: "Créer un compte",
+      signUpSubmittingLabel: "Création du compte...",
+      haveAccountCta: "Déjà inscrit ?",
+      noAccountCta: "Pas encore de compte ?",
+      createAccountCta: "Créer un compte",
+      backToSignIn: "Retour à la connexion",
+      signUpErrorPrefix: "Impossible de créer le compte : ",
+      signUpEmailNotice:
+        "Un e-mail de confirmation vous a été envoyé. Consultez votre boîte de réception pour activer votre compte.",
+      passwordMismatch: "Les mots de passe ne correspondent pas.",
+    },
+    home: {
+      badge: "Analytique énergétique assistée par IA",
+      heroTitleLine1: "Comprenez votre énergie",
+      heroTitleLine2: "Réduisez votre impact",
+      heroDescription:
+        "Importez vos données énergétiques et obtenez instantanément des analyses, des ventilations de coûts et des recommandations IA pour réduire vos factures et votre empreinte carbone.",
+      features: {
+        analytics: {
+          title: "Visualisations interactives",
+          description: "Des graphiques clairs pour suivre vos usages, repérer les pics et suivre l'évolution des coûts.",
+        },
+        recommendations: {
+          title: "Recommandations IA",
+          description: "Des conseils personnalisés pour optimiser votre consommation et alléger vos dépenses.",
+        },
+        co2: {
+          title: "Suivi du CO₂",
+          description: "Mesurez en temps réel votre empreinte carbone et son évolution.",
+        },
+      },
+      ctaSectionTitle: "Démarrez en quelques secondes",
+      ctaSectionDescription: "Importez vos données de consommation pour lancer l'analyse.",
+      ctaPrimary: "Démarrer l'import",
+      ctaSecondary: "Voir un aperçu",
+      pillars: {
+        secure: {
+          title: "Sécurisé et privé",
+          description: "Vos données sont traitées localement et ne sont jamais conservées.",
+        },
+        instant: {
+          title: "Analyse immédiate",
+          description: "Obtenez des informations en quelques secondes, pas en heures.",
+        },
+        formats: {
+          title: "Formats multiples",
+          description: "Compatible CSV, Excel ou JSON.",
+        },
+      },
+    },
+    uploadPage: {
+      title: "Importer vos données énergétiques",
+      description: "Ajoutez vos jeux de données pour débloquer des analyses personnalisées.",
+    },
+    dataUpload: {
+      cardTitle: "Importer des données énergétiques",
+      cardDescription:
+        "Déposez un fichier CSV UTF-8 incluant une colonne datetime (ou date + time), kwh et un coût optionnel.",
+      dropLabel: "Déposez votre fichier ici ou cliquez pour parcourir",
+      dropHelper: "Fichiers CSV UTF-8 jusqu'à 10 Mo",
+      readyLabel: "Fichier prêt",
+      uploadButtonIdle: "Importer et analyser",
+      uploadButtonBusy: "Analyse en cours...",
+      modalTitle: "Analyse en cours",
+      modalDescription: "Cela ne prendra qu'un instant.",
+      formatTitle: "Format CSV attendu :",
+      toastSuccessTitle: "Import terminé",
+      toastSuccessDescription: "Votre jeu de données a été analysé et enregistré.",
+      toastErrorTitle: "Échec de l'import",
+      toastDuplicateDescription: "Ce fichier semble identique à un import précédent. Essayez un jeu de données différent.",
+      toastGenericDescription: "Impossible de traiter la réponse du serveur. Veuillez réessayer.",
+    },
+    statsTitles: {
+      "Total Consumption": "Consommation totale",
+      "Total Cost": "Coût total",
+      "CO₂ Emission": "Émissions de CO₂",
+      "Peak Usage Day": "Jour de consommation maximale",
+    },
+    aiRecommendationsCopy: {
+      title: "Recommandations IA",
+      description: "Conseils personnalisés issus de vos dernières données.",
+      chatCta: "Discuter avec vos données",
+      chatAria: "Ouvrir l'assistant conversationnel",
+    },
+    analyticsPage: {
+      title: "Analyses énergétiques",
+      description: "Visualisez vos tendances de consommation et de coûts.",
+      historyButton: "Voir l'historique des imports",
+      exportButton: "Exporter le rapport",
+      exportSuccess: "Rapport exporté",
+      exportError: "Impossible de générer le rapport.",
+      exportUnavailable: "Aucune analyse à exporter.",
+      emptyTitle: "Aucune analyse disponible",
+      emptyDescription: "Importez un fichier CSV sur la page Import pour générer votre tableau de bord.",
+      loading: "Chargement...",
+    },
+    chatPage: {
+      title: "Conversation",
+      subtitle: "Interrogez vos usages, vos coûts ou votre impact carbone.",
+      placeholderAnalyzing: (question: string | null) =>
+        question ? `Analyse de votre question "${question}"...` : "Analyse de vos données...",
+      statusReady: "Prêt",
+      statusWorking: "Génération des insights...",
+      placeholderHint: "L'assistant prépare une réponse...",
+      suggestionsTitle: "Lancer une conversation",
+      suggestionsDescription:
+        "Posez vos questions sur vos données énergétiques. Explorez les pics de consommation, suivez vos coûts et identifiez des opportunités d'économie.",
+      suggestions: [
+        "Quelle semaine de 2025 affiche la consommation totale la plus élevée ?",
+        "Quel est le coût moyen par kWh entre les week-ends et les jours de semaine ?",
+        "Montre-moi mes 5 jours les plus coûteux en 2025.",
+        "De combien ma consommation totale a-t-elle changé entre le premier et le deuxième trimestre 2025 ?",
+      ],
+      inputPlaceholder: "Posez une question sur vos données énergétiques...",
+      inputButton: "Envoyer",
+      errorPrefix: "Je rencontre des difficultés pour contacter le service d'insights. ",
+      authRequired: "Authentification requise.",
+    },
+    uploadHistory: {
+      leadBadge: "Historique des imports",
+      heading: "Tableaux enregistrés",
+      description: "Consultez chaque import réalisé avec les totaux calculés et l'horodatage associé.",
+      tableTitle: "Historique des imports",
+      deleteLabel: "Supprimer",
+      deleteConfirm: "Confirmez-vous la suppression de ce jeu de données ?",
+      deleteSuccess: "Jeu de données supprimé.",
+      deleteError: "Suppression impossible.",
+      backButton: "Retour au tableau de bord",
+      emptyTitle: "Aucun import enregistré",
+      emptyDescription: "Importez un CSV depuis la page Import pour voir vos données ici.",
+      loading: "Chargement de l'historique...",
+      columns: {
+        uploadedAt: "Importé le",
+        file: "Fichier",
+        totalKwh: "Total kWh",
+        totalCost: "Coût total",
+        totalCo2: "CO₂ total (kg)",
+        rows: "Lignes",
+        actions: "Actions",
+      },
+      viewDetail: "Ouvrir",
+    },
+    datasetDetail: {
+      badgePrefix: "Jeu de données #",
+      totalEnergy: "Énergie totale",
+      totalCost: "Coût total",
+      totalCo2: "CO₂ total (kg)",
+      rowsTitle: "Lignes du jeu de données",
+      entriesLabel: "entrées",
+      backButton: "Retour à l'historique",
+      exportLabel: "Export CSV (bientôt)",
+      loading: "Chargement du jeu de données...",
+      notFound: "Jeu de données introuvable",
+      error: "Impossible de charger le jeu de données.",
+    },
+  },
+  en: {
+    header: {
+      brandTagline: "Smart Energy Analytics",
+      nav: {
+        overview: "Overview",
+        upload: "Data Intake",
+        analytics: "Analytics Hub",
+        chat: "Conversational AI",
+      },
+      toggleLabel: "EN / FR",
+      toggleDescription: "Switch the interface to French",
+    },
+    auth: {
+      signInTitle: "Sign In",
+      signInSubtitle: "Access your energy insights dashboard.",
+      emailLabel: "Email",
+      passwordLabel: "Password",
+      confirmPasswordLabel: "Confirm password",
+      submitLabel: "Sign In",
+      submittingLabel: "Signing in...",
+      errorPrefix: "Unable to sign in: ",
+      signOut: "Sign Out",
+      signInCta: "Sign In",
+      postSignInRedirect: "Go to dashboard",
+      signUpTitle: "Create an Account",
+      signUpSubtitle: "Unlock energy analytics and recommendations.",
+      signUpSubmitLabel: "Create Account",
+      signUpSubmittingLabel: "Creating account...",
+      haveAccountCta: "Already registered?",
+      noAccountCta: "Need an account?",
+      createAccountCta: "Create account",
+      backToSignIn: "Back to sign in",
+      signUpErrorPrefix: "Unable to sign up: ",
+      signUpEmailNotice:
+        "We just sent a confirmation email. Check your inbox to activate your account.",
+      passwordMismatch: "Passwords do not match.",
+    },
+    home: {
+      badge: "AI-Powered Energy Analytics",
+      heroTitleLine1: "Understand Your Energy",
+      heroTitleLine2: "Reduce Your Impact",
+      heroDescription:
+        "Upload your energy data and get instant insights, detailed cost breakdowns, and AI-powered recommendations to reduce bills and carbon footprint.",
+      features: {
+        analytics: {
+          title: "Visual Analytics",
+          description: "Interactive charts showing usage patterns, peak times, and cost trends over time.",
+        },
+        recommendations: {
+          title: "AI Recommendations",
+          description: "Smart, personalized suggestions to optimize energy usage and reduce costs.",
+        },
+        co2: {
+          title: "CO₂ Tracking",
+          description: "Monitor your carbon footprint and environmental impact in real time.",
+        },
+      },
+      ctaSectionTitle: "Get Started in Seconds",
+      ctaSectionDescription: "Upload your energy consumption data to begin analysis.",
+      ctaPrimary: "Start Upload",
+      ctaSecondary: "View Sample Analytics",
+      pillars: {
+        secure: {
+          title: "Secure & Private",
+          description: "Your data is processed locally and never stored.",
+        },
+        instant: {
+          title: "Instant Analysis",
+          description: "Get insights in seconds, not hours.",
+        },
+        formats: {
+          title: "Multiple Formats",
+          description: "Supports CSV, Excel, and JSON files.",
+        },
+      },
+    },
+    uploadPage: {
+      title: "Upload Your Energy Data",
+      description: "Bring your datasets into the platform to unlock personalized analytics.",
+    },
+    dataUpload: {
+      cardTitle: "Upload Energy Data",
+      cardDescription:
+        "Upload a UTF-8 CSV that includes a datetime column (or date + time), kwh, and optional cost.",
+      dropLabel: "Drop your file here or click to browse",
+      dropHelper: "Supports UTF-8 CSV exports (max 10MB)",
+      readyLabel: "File selected",
+      uploadButtonIdle: "Upload & Analyze",
+      uploadButtonBusy: "Uploading & Analyzing...",
+      modalTitle: "Crunching your data...",
+      modalDescription: "This will just take a moment.",
+      formatTitle: "Expected CSV Format:",
+      toastSuccessTitle: "Upload complete",
+      toastSuccessDescription: "Your dataset has been analyzed and saved.",
+      toastErrorTitle: "Upload failed",
+      toastDuplicateDescription: "This dataset looks identical to one already uploaded. Try a different file.",
+      toastGenericDescription: "We couldn't process the server response. Please try again.",
+    },
+    statsTitles: {
+      "Total Consumption": "Total Consumption",
+      "Total Cost": "Total Cost",
+      "CO₂ Emission": "CO₂ Emission",
+      "Peak Usage Day": "Peak Usage Day",
+    },
+    aiRecommendationsCopy: {
+      title: "AI Recommendations",
+      description: "Guidance generated from your latest energy patterns.",
+      chatCta: "Chat with your data",
+      chatAria: "Open the conversational assistant",
+    },
+    analyticsPage: {
+      title: "Energy Analytics",
+      description: "Comprehensive insights into your energy consumption patterns.",
+      historyButton: "View Upload History",
+      exportButton: "Export Report",
+      exportSuccess: "Report exported",
+      exportError: "Unable to generate the report.",
+      exportUnavailable: "No analytics available to export.",
+      emptyTitle: "No analytics yet",
+      emptyDescription: "Upload a CSV file on the Upload page to generate your analytics dashboard.",
+      loading: "Loading...",
+    },
+    chatPage: {
+      title: "Conversation",
+      subtitle: "Ask about usage patterns, costs, or carbon impact and get tailored insights.",
+      placeholderAnalyzing: (question: string | null) =>
+        question ? `Analyzing your question about "${question}"...` : "Analyzing your data...",
+      statusReady: "Ready",
+      statusWorking: "Generating insights...",
+      placeholderHint: "Energy assistant is preparing a response...",
+      suggestionsTitle: "Start a Conversation",
+      suggestionsDescription:
+        "Ask anything about your energy data. Discover peak usage, track costs, and reveal opportunities to reduce your environmental footprint.",
+      suggestions: [
+        "Which week in 2025 had the highest total energy usage?",
+        "What's the average daily cost per kWh on weekends versus weekdays?",
+        "Show my top 5 most expensive days of 2025.",
+        "How much did my total usage change from the first quarter to the second quarter of 2025?",
+      ],
+      inputPlaceholder: "Ask about your energy data...",
+      inputButton: "Send",
+      errorPrefix: "I'm having trouble reaching the insights service right now. ",
+      authRequired: "Authentication required.",
+    },
+    uploadHistory: {
+      leadBadge: "Upload History",
+      heading: "Saved Datasets",
+      description: "Review each uploaded file with totals and timestamps.",
+      tableTitle: "Upload History",
+      deleteLabel: "Delete",
+      deleteConfirm: "Are you sure you want to delete this dataset?",
+      deleteSuccess: "Dataset deleted.",
+      deleteError: "Unable to delete dataset.",
+      backButton: "Back to analytics",
+      emptyTitle: "No uploads yet",
+      emptyDescription: "Upload a CSV from the Import page to see your history here.",
+      loading: "Loading history...",
+      columns: {
+        uploadedAt: "Uploaded",
+        file: "File",
+        totalKwh: "Total kWh",
+        totalCost: "Total cost",
+        totalCo2: "Total CO₂ (kg)",
+        rows: "Rows",
+        actions: "Actions",
+      },
+      viewDetail: "Open",
+    },
+    datasetDetail: {
+      badgePrefix: "Dataset #",
+      totalEnergy: "Total energy",
+      totalCost: "Total cost",
+      totalCo2: "Total CO₂ (kg)",
+      rowsTitle: "Dataset rows",
+      entriesLabel: "entries",
+      backButton: "Back to history",
+      exportLabel: "Export CSV (coming soon)",
+      loading: "Loading dataset...",
+      notFound: "Dataset not found",
+      error: "Unable to load dataset.",
+    },
+  },
+}
+
+export function getTranslation(language: Language, path: string): unknown {
+  const segments = path.split(".")
+  let current: any = translations[language]
+  for (const segment of segments) {
+    if (current && typeof current === "object" && segment in current) {
+      current = current[segment]
+    } else {
+      return undefined
+    }
+  }
+  return current
+}

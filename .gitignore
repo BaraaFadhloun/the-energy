@@ -1,0 +1,24 @@
+# Environment configuration
+frontend/.env
+frontend/.env.local
+backend/.env
+.env
+
+# Node/Next build artifacts
+.next/
+frontend/.next/
+frontend/.turbo/
+frontend/.vercel/
+frontend/.cache/
+frontend/node_modules/
+
+# Python build artifacts
+backend/.venv/
+backend/__pycache__/
+backend/.pytest_cache/
+backend/*.py[cod]
+
+# Logs and temporary files
+*.log
+*.tmp
+.DS_Store
