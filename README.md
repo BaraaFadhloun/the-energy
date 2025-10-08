@@ -2,6 +2,8 @@
 
 Energy Insight is a full-stack analytics suite that turns raw energy usage CSVs into interactive dashboards, bilingual AI recommendations, and question/answer insights. The project is split into a FastAPI backend and a Next.js frontend connected to Supabase for storage and authentication.
 
+Live preview: https://the-energy-frontend.onrender.com/ *(Render free tier — expect cold starts for both frontend and backend)*
+
 ## Contents
 
 - [Architecture Overview](#architecture-overview)
@@ -238,6 +240,7 @@ frontend/
   2025-03-01,07:00,18.5,5.90
   ```
 - **Export file opens with garbled characters**: The report uses UTF-8 with CRLF terminators for spreadsheet compatibility; choose UTF-8 when importing manually.
+- **Cold starts on Render**: Both the frontend and backend use the free plan; first load after inactivity may take up to a minute while instances wake up.
 
 ## Roadmap Ideas
 
