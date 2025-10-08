@@ -47,12 +47,14 @@ Supabase Auth┘          └────────────┘         └
 ## Key Features
 
 ### Data Upload & Storage
+![Data upload flow](Features/Data%20Intake.png)
 - Accepts UTF-8 CSV files with either `datetime,kwh[,cost]` or `date,time,kwh[,cost]` columns.
 - Backend validates structure, parses readings, and calculates derived metrics (totals, PLF, peak windows, etc.).
 - Results and raw readings are stored in Supabase with a per-user `user_id` so data stays private.
 - Duplicate detection uses a content fingerprint to prevent re-uploading identical datasets for the same user.
 
 ### Analytics Dashboard
+![Analytics dashboard](Features/Analytics%20Hub.png)
 - Displays stat cards (total consumption, cost, CO₂, peak day) with change indicators.
 - Visualises usage over time and cost breakdown segments.
 - Shows latest AI recommendations and narrative insights (peak window, top expensive days, quarter deltas, etc.).
@@ -72,6 +74,7 @@ Supabase Auth┘          └────────────┘         └
 - Frontend renders both languages and the toggle switches between them instantly.
 
 ### Chat With Your Data
+![Conversational assistant](Features/Conversational%20Al.png)
 - Conversational assistant converts natural language questions to safe SQL (read-only, user-filtered).
 - Uses an in-memory SQLite sandbox populated only with the signed-in user’s rows.
 - Presents markdown responses with supporting bullet lists where appropriate.
